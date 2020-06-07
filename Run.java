@@ -2,7 +2,7 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-//check
+
 public class Run extends HttpServlet
 {
 
