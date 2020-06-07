@@ -1,0 +1,79 @@
+function  set()
+{
+
+
+if(document.getElementById("class").value=="")
+{
+alert("please enter class Name");
+}
+else
+{
+var cls=document.getElementById("class").value;
+
+document.getElementById("code").innerHTML="public class "+cls+"{\n\n public static void main(String [] args)\n {\n \n }\n}";
+}
+}
+
+function compile()
+{
+var xmlhttp;
+
+if(document.getElementById("code").value=="")
+{
+alert("please insert Code");
+}
+else
+{
+var url="compile?code="+document.getElementById("code").value+"&className="+document.getElementById("class").value;
+
+if(window.XMLHttpRequest)
+{
+     xmlhttp=new XMLHttpRequest();
+}
+else
+{
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4&&xmlhttp.status==200)
+{
+document.getElementById("code1").innerHTML=xmlhttp.responseText;
+}
+}
+xmlhttp.open("get",url,true);
+xmlhttp.send();
+}
+}
+function run()
+{
+var xmlhttp;
+
+var url="run?className="+document.getElementById("class").value;
+
+if(window.XMLHttpRequest)
+{
+xmlhttp=new XMLHttpRequest();
+}
+else
+{
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4&&xmlhttp.status==200)
+{
+document.getElementById("code1").innerHTML=xmlhttp.responseText;
+}
+}
+xmlhttp.open("get",url,true);
+xmlhttp.send();
+}
+
+
+function blank()
+{
+document.getElementById("class").value="";
+document.getElementById("code").value="";
+document.getElementById("code1").innerHTML="";
+}
